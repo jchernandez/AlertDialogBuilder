@@ -2,7 +2,7 @@
 
 [![](https://jitpack.io/v/jchernandez/AlertDialogBuilder.svg)](https://jitpack.io/#jchernandez/AlertDialogBuilder)
 
-AlertDialogBuilder is a simple implementation of the Android  `android.support.v7.app.AlertDialog.Builder` to simple custumize the `AlertDialog` Buttons.
+AlertDialogBuilder is a simple implementation of the Android  `android.support.v7.app.AlertDialog.Builder` to simple customize the `AlertDialog` Buttons.
 
 ```java
     AlertDialogBuilder builder = new AlertDialogBuilder(this);
