@@ -5,7 +5,7 @@ AlertDialogBuilder is a simple implementation of the Android  `android.support.v
 ```java
     AlertDialogBuilder builder = new AlertDialogBuilder(this);
         .title(R.string.title)
-        .content(R.string.content)
+        .setMessage(R.string.message)
         .setPositiveButton(R.string.agree,onDialogClickListener)
         .setNegativeButton(R.string.disagree,onDialogClickListener);
 ```
