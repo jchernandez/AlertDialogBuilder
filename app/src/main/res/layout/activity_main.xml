@@ -13,5 +13,5 @@
         android:onClick="onclick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Show alert" />
 </RelativeLayout>

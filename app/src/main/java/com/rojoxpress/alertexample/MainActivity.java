@@ -1,8 +1,11 @@
 package com.rojoxpress.alertexample;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
 import com.rojoxpress.alertdialogbuilder.AlertDialogBuilder;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onclick(View view) {
         AlertDialogBuilder builder = new AlertDialogBuilder(this);
-        builder.setPositiveButton("accented button",null);
+        builder.setMessage("Alert custom buttons example");
+        builder.setPositiveButton("Positive",null);
+        builder.setNegativeButton("Negative",null);
+        builder.setNeutralButton("Neutral",null);
+        builder.setPositiveColor(ContextCompat.getColor(this,R.color.colorAccent));
+        builder.setNegativeColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
         builder.show();
     }
 }
