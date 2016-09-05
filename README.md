@@ -2,6 +2,29 @@
 
 [![](https://jitpack.io/v/jchernandez/AlertDialogBuilder.svg)](https://jitpack.io/#jchernandez/AlertDialogBuilder)
 
+# Gradle Dependency
+
+### Repository
+The Gradle dependency is available via [JitPack](https://jitpack.io/#jchernandez/AlertDialogBuilder).
+
+Add it in your root build.gradle at the end of repositories:
+```gradle
+allprojects {
+	repositories {
+		...
+		maven { url "https://jitpack.io" }
+	}
+}
+```
+
+ Add the dependency:
+```gradle
+    dependencies {
+	    compile 'com.github.jchernandez:AlertDialogBuilder:0.1.1'
+    }
+```
+
+
 AlertDialogBuilder is a simple implementation of the Android  `android.support.v7.app.AlertDialog.Builder` to simple customize the `AlertDialog` Buttons.
 
 ```java
