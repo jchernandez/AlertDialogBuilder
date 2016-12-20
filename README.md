@@ -27,9 +27,9 @@ allprojects {
     }
 ```
 
-### Customization
+## Usage
 
-Changing button colors
+The `AlertDialogBuilder` can be use as the Android `AlertDialog` :
 
 ```java
     AlertDialogBuilder builder = new AlertDialogBuilder(this);
@@ -37,8 +37,33 @@ Changing button colors
         .setMessage(R.string.message)
         .setPositiveButton(R.string.agree,onDialogClickListener)
         .setNegativeButton(R.string.disagree,onDialogClickListener);
+    builder.show();
 ```
 
+## Customization
+
+## Style
+
+`AlertDialogBuilder` can be styled from the `styles.xml` file:
+
+```xml
+ <style name="MyAwesomeStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+
+    <!--ad_positiveColor used on positive text button color -->
+    <item name="ad_positiveColor">#08ff00</item>
+
+    <!--ad_neutralColor used on positive text button color -->
+    <item name="ad_neutralColor">#ff0000</item>
+
+    <!--ad_negativeColor used on positive text button color -->
+    <item name="ad_negativeColor">#e1a4a4</item>
+</style>
+```
+
+### Java
 By the fault it will take your Application `accentColor` to Tint the `positiveButton` but you can change it, also you can change the `negativeButton` and the `neutralButton`.
 
 ```java
