@@ -1,5 +1,6 @@
 package com.rojoxpress.alertexample;
 
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Positive",null);
         builder.setNegativeButton("Negative",null);
         builder.setNeutralButton("Neutral",null);
-        builder.setPositiveColor(ContextCompat.getColor(this,R.color.colorAccent));
-        builder.setNegativeColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+
+        if(view.getId() != R.id.themed_button) {
+            builder.setPositiveColor(ContextCompat.getColor(this,R.color.colorAccent));
+            builder.setNegativeColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+            builder.setNeutralColor(Color.BLACK);
+        }
         builder.show();
     }
 }

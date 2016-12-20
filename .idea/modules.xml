@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AlertDialogExample.iml" filepath="$PROJECT_DIR$/AlertDialogExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AlertDialogBuilder.iml" filepath="$PROJECT_DIR$/AlertDialogBuilder.iml" />
       <module fileurl="file://$PROJECT_DIR$/alertbuilder/alertbuilder.iml" filepath="$PROJECT_DIR$/alertbuilder/alertbuilder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

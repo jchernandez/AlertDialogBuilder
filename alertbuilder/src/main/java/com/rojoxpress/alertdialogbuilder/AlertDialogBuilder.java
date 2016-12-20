@@ -2,11 +2,14 @@ package com.rojoxpress.alertdialogbuilder;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AlertDialog.Builder;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.widget.Button;
 
@@ -16,7 +19,6 @@ public class AlertDialogBuilder extends Builder {
     private int negativeTextColor;
     private int positiveTextColor;
     private int neutralTextColor;
-    private String defNegativeColor = "#515151";
     private Context context;
 
     /**
@@ -32,7 +34,16 @@ public class AlertDialogBuilder extends Builder {
     public AlertDialogBuilder(Context context) {
         super(context);
         this.context =  context;
+        init();
+    }
 
+    public AlertDialogBuilder(Context context, int theme) {
+        super(context, theme);
+        init();
+    }
+
+
+    public void init() {
         int accent,primary;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             accent = android.R.attr.colorAccent;
@@ -42,13 +53,15 @@ public class AlertDialogBuilder extends Builder {
             primary = R.attr.colorPrimary;
         }
 
+        String defNegativeColor = "#515151";
         negativeTextColor = Color.parseColor(defNegativeColor);
-        neutralTextColor = resolveColor(context,primary);
-        positiveTextColor = resolveColor(context,accent);
-    }
 
-    public AlertDialogBuilder(Context context, int theme) {
-        super(context, theme);
+        positiveTextColor = AdUtils.resolveColor(context, R.attr.ad_positiveColor,
+                AdUtils.resolveColor(context,accent,AdUtils.defColor));
+        neutralTextColor = AdUtils.resolveColor(context, R.attr.ad_neutralColor,
+                AdUtils.resolveColor(context,primary,AdUtils.defColor));
+        negativeTextColor = AdUtils.resolveColor(context, R.attr.ad_negativeColor,
+                negativeTextColor);
     }
 
     /**
@@ -86,19 +99,4 @@ public class AlertDialogBuilder extends Builder {
         neutralButton.setTextColor(neutralTextColor);
         return dialog;
     }
-
-
-    /**
-     * Resolve a color data from an attribute
-     * @param context Context of the application
-     * @param attr Attribute color to resolve
-     * @return int resolved color.
-     */
-    @ColorInt
-    private int resolveColor(Context context,int attr) {
-        TypedValue a = new TypedValue();
-        context.getTheme().resolveAttribute(attr, a, true);
-        return a.data;
-    }
-
 }

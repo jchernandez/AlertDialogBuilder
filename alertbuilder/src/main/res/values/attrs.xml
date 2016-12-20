@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AlertBuilder">
+        <attr name="ad_positiveColor" format="reference|color"/>
+        <attr name="ad_negativeColor" format="reference|color"/>
+        <attr name="ad_neutralColor" format="reference|color"/>
+    </declare-styleable>
+</resources>
