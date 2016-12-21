@@ -44,14 +44,8 @@ public class AlertDialogBuilder extends Builder {
 
 
     public void init() {
-        int accent,primary;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            accent = android.R.attr.colorAccent;
-            primary = android.R.attr.colorPrimary;
-        } else {
-            accent = R.attr.colorAccent;
-            primary = R.attr.colorPrimary;
-        }
+        int accent = AdUtils.getAccentColorAttr();
+        int primary = AdUtils.getPrimaryColorAttr();
 
         String defNegativeColor = "#515151";
         negativeTextColor = Color.parseColor(defNegativeColor);

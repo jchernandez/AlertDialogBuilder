@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
 import android.util.TypedValue;
@@ -34,5 +35,24 @@ public class AdUtils {
         } else {
             return a.data;
         }
+    }
+
+    public static int getAccentColorAttr() {
+        int accent ;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            accent = android.R.attr.colorAccent;
+        } else {
+            accent = R.attr.colorAccent;
+        }
+        return accent;
+    }
+    public static int getPrimaryColorAttr() {
+        int primary ;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            primary = android.R.attr.colorPrimary;
+        } else {
+            primary = R.attr.colorPrimary;
+        }
+        return primary;
     }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.rojoxpress.alertdialogbuilder.AlertDialogBuilder;
+import com.rojoxpress.alertdialogbuilder.AlertProgressBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,17 +19,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onclick(View view) {
-        AlertDialogBuilder builder = new AlertDialogBuilder(this);
-        builder.setMessage("Alert custom buttons example");
-        builder.setPositiveButton("Positive",null);
-        builder.setNegativeButton("Negative",null);
-        builder.setNeutralButton("Neutral",null);
 
-        if(view.getId() != R.id.themed_button) {
-            builder.setPositiveColor(ContextCompat.getColor(this,R.color.colorAccent));
-            builder.setNegativeColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
-            builder.setNeutralColor(Color.BLACK);
+        if(view.getId() == R.id.progress_button) {
+            AlertProgressBuilder builder = new AlertProgressBuilder(this);
+            builder.setMessage("message");
+            builder.setTitle("title");
+            builder.setColorProgress(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+            builder.show();
+        } else {
+
+            AlertDialogBuilder builder = new AlertDialogBuilder(this);
+            builder.setMessage("Alert custom buttons example");
+            builder.setPositiveButton("Positive", null);
+            builder.setNegativeButton("Negative", null);
+            builder.setNeutralButton("Neutral", null);
+
+            if (view.getId() != R.id.themed_button) {
+                builder.setPositiveColor(ContextCompat.getColor(this, R.color.colorAccent));
+                builder.setNegativeColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+                builder.setNeutralColor(Color.BLACK);
+            }
+            builder.show();
         }
-        builder.show();
     }
 }
