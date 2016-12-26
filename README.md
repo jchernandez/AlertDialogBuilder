@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/jchernandez/AlertDialogBuilder.svg)](https://jitpack.io/#jchernandez/AlertDialogBuilder)
 
 
-AlertDialogBuilder is a simple implementation of the Android  `android.support.v7.app.AlertDialog.Builder` to simple customize the `AlertDialog` Buttons.
+AlertDialogBuilder is a simple implementation of the Android  `android.support.v7.app.AlertDialog.Builder` to simple customize the `AlertDialog` Buttons and a customizable `ProgressDialog` that usea the [TintedProgressBar](https://github.com/jchernandez/TintedProgressBar).
 
 # Gradle Dependency
 
@@ -40,9 +40,19 @@ The `AlertDialogBuilder` can be use as the Android `AlertDialog` :
     builder.show();
 ```
 
-## Customization
+The `AlertProgressBuilder` can be use as the Android `ProgressDialog`:
 
-## Style
+```java
+    AlertProgressBuilder builder = new AlertProgressBuilder(this);
+    builder.setMessage("message");
+    builder.setTitle("title");
+    builder.show();
+```
+
+
+### Customization
+
+### Style
 
 `AlertDialogBuilder` can be styled from the `styles.xml` file:
 
@@ -60,15 +70,31 @@ The `AlertDialogBuilder` can be use as the Android `AlertDialog` :
 
     <!--ad_negativeColor used on positive text button color -->
     <item name="ad_negativeColor">#e1a4a4</item>
+
+  <!--   AlertProgressBuilder  --->
+  <!-- ProgressBar Dialog Color  --->
+    <item name="pb_progressColor">#792e2e</item>
+  <!-- ProgressDialog Ttile  --->
+    <item name="pb_titleColor">#6ce4a6</item>
+  <!-- ProgressDialog Divider  --->
+    <item name="pb_dividerColor">#6ce4a6</item>
 </style>
 ```
 
 ### Java
-By the fault it will take your Application `accentColor` to Tint the `positiveButton` but you can change it, also you can change the `negativeButton` and the `neutralButton`.
+By the fault it will take your Application `accentColor` to Tint the `AlertDialogBuilder` `positiveButton` and `AlertProgressBuilder` `Title`, `Divider`and `ProgressBar` divider but you can change it, also you can change the `negativeButton` and the `neutralButton`.
 
 ```java
-    AlertDialogBuilder builder = new AlertDialogBuilder(this);
-    builder.setNegativeColor(ContextCompat.getColor(context,R.color.negative));
-    builder.setNeutralColor(ContextCompat.getColor(context,R.color.neutral));
-    builder.setPositiveColor(ContextCompat.getColor(context,R.color.accentColor));
+AlertDialogBuilder builder = new AlertDialogBuilder(this);
+builder.setNegativeColor(ContextCompat.getColor(context,R.color.negative));
+builder.setNeutralColor(ContextCompat.getColor(context,R.color.neutral));
+builder.setPositiveColor(ContextCompat.getColor(context,R.color.accentColor));
+```
+
+```java
+AlertProgressBuilder builder = new AlertProgressBuilder(this);
+builder.setMessage("message");
+builder.setTitle("title");
+builder.setColorProgress(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+builder.show();
 ```
