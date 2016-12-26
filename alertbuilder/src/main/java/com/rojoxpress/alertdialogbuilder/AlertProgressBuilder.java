@@ -17,6 +17,8 @@ public class AlertProgressBuilder extends ProgressDialog {
     private String message;
     private String title;
     private int progressColor = 0;
+    private int titleColor = 0;
+    private int dividerColor = 0;
 
     public AlertProgressBuilder(Context context) {
         super(context);
@@ -48,11 +50,11 @@ public class AlertProgressBuilder extends ProgressDialog {
 
 
 
-        final int dividerColor = AdUtils.resolveColor(getContext(), R.attr.pb_dividerColor,
+        dividerColor = AdUtils.resolveColor(getContext(), R.attr.pb_dividerColor,
                 AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
         progressColor = AdUtils.resolveColor(getContext(), R.attr.pb_progressColor,
                 AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
-        final int titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor,
+        titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor,
                 accent);
 
 
@@ -71,7 +73,6 @@ public class AlertProgressBuilder extends ProgressDialog {
 
                 if(title != null) {
                     titleView.setText(title);
-                    view.findViewById(R.id.progress_divider).setVisibility(View.VISIBLE);
                     view.findViewById(R.id.progress_divider).setVisibility(View.VISIBLE);
                     titleView.setVisibility(View.VISIBLE);
                 }
@@ -108,5 +109,12 @@ public class AlertProgressBuilder extends ProgressDialog {
 
     public void setColorProgress(@ColorInt int color) {
         this.progressColor = color;
+    }
+
+    public void setTitleColor(@ColorInt int color) {
+        this.titleColor = color;
+    }
+    public void setDividerColor(@ColorInt int color) {
+        this.dividerColor = color;
     }
 }

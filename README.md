@@ -96,5 +96,6 @@ AlertProgressBuilder builder = new AlertProgressBuilder(this);
 builder.setMessage("message");
 builder.setTitle("title");
 builder.setColorProgress(ContextCompat.getColor(this,R.color.colorPrimaryDark));
-builder.show();
+builder.setTitleColor(ContextCompat.getColor(this, R.color.colorAccent));
+builder.setDividerColor(Color.GREEN);builder.show();
 ```
