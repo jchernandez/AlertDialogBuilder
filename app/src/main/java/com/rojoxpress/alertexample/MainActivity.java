@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setTitle("title");
             builder.setColorProgress(ContextCompat.getColor(this,R.color.colorPrimaryDark));
             builder.show();
+//            AlertProgressBuilder progressBuilder = AlertProgressBuilder.show(this,null, "message", true, false);
         } else {
 
             AlertDialogBuilder builder = new AlertDialogBuilder(this);

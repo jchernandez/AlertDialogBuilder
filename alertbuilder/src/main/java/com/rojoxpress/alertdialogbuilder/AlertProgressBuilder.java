@@ -28,7 +28,34 @@ public class AlertProgressBuilder extends ProgressDialog {
         initProgress();
     }
 
+    public static AlertProgressBuilder show(Context context, String title, String message, boolean indeterminate, boolean cancelable) {
+        AlertProgressBuilder builder = new AlertProgressBuilder(context);
+
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setIndeterminate(indeterminate);
+        builder.setCancelable(cancelable);
+
+        builder.show();
+        return builder;
+    }
+
+
     private void initProgress() {
+
+        int accent = AdUtils.getAccentColorAttr();
+        int primary = AdUtils.getPrimaryColorAttr();
+
+
+
+        final int dividerColor = AdUtils.resolveColor(getContext(), R.attr.pb_dividerColor,
+                AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
+        progressColor = AdUtils.resolveColor(getContext(), R.attr.pb_progressColor,
+                AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
+        final int titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor,
+                accent);
+
+
         setOnShowListener(new OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
@@ -38,10 +65,9 @@ public class AlertProgressBuilder extends ProgressDialog {
                 TextView titleView = (TextView) view.findViewById(R.id.progress_title);
                 TintedProgressBar progressBar = (TintedProgressBar) view.findViewById(R.id.progressbar);
 
-                int accentColor = AdUtils.resolveColor(getContext(),AdUtils.getAccentColorAttr(),AdUtils.defColor);
 
-                titleView.setTextColor(accentColor);
-                view.findViewById(R.id.progress_divider).setBackgroundColor(accentColor);
+                titleView.setTextColor(titleColor);
+                view.findViewById(R.id.progress_divider).setBackgroundColor(dividerColor);
 
                 if(title != null) {
                     titleView.setText(title);
@@ -71,7 +97,7 @@ public class AlertProgressBuilder extends ProgressDialog {
     }
 
     public void setTitle(String title) {
-        this.title = message;
+        this.title = title;
     }
 
     public void setTitle(@StringRes int stringId) {

@@ -5,4 +5,10 @@
         <attr name="ad_negativeColor" format="reference|color"/>
         <attr name="ad_neutralColor" format="reference|color"/>
     </declare-styleable>
+    <declare-styleable name="ProgressBuilder">
+        <attr name="pb_titleColor" format="reference|color"/>
+        <attr name="pb_progressColor" format="reference|color"/>
+        <attr name="pb_dividerColor" format="reference|color"/>
+        <attr name="progressBuilderStyle" format="reference"/>
+    </declare-styleable>
 </resources>
