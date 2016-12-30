@@ -9,7 +9,7 @@
         <item name="ad_positiveColor">#08ff00</item>
         <item name="ad_neutralColor">#ff0000</item>
         <item name="ad_negativeColor">#e1a4a4</item>
-        <item name="pb_progressColor">#792e2e</item>
+        <item name="pb_progressColor">#cf4141</item>
         <item name="pb_titleColor">#6ce4a6</item>
         <item name="pb_dividerColor">#6ce4a6</item>
     </style>

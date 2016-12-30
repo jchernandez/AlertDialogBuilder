@@ -1,5 +1,6 @@
 package com.rojoxpress.alertexample;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.rojoxpress.TintedProgressBar;
 import com.rojoxpress.alertdialogbuilder.AlertDialogBuilder;
-import com.rojoxpress.alertdialogbuilder.AlertProgressBuilder;
+import com.rojoxpress.alertdialogbuilder.TintedProgressDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public void onclick(View view) {
 
         if(view.getId() == R.id.progress_button) {
-            AlertProgressBuilder builder = new AlertProgressBuilder(this);
+            TintedProgressDialog builder = new TintedProgressDialog(this);
             builder.setMessage("message");
             builder.setTitle("title");
             builder.setColorProgress(ContextCompat.getColor(this,R.color.colorPrimaryDark));
