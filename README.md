@@ -40,10 +40,10 @@ The `AlertDialogBuilder` can be use as the Android `AlertDialog` :
     builder.show();
 ```
 
-The `AlertProgressBuilder` can be use as the Android `ProgressDialog`:
+The `TintedProgressDialog` can be use as the Android `ProgressDialog`:
 
 ```java
-    AlertProgressBuilder builder = new AlertProgressBuilder(this);
+    TintedProgressDialog builder = new TintedProgressDialog(this);
     builder.setMessage("message");
     builder.setTitle("title");
     builder.show();
@@ -71,10 +71,10 @@ The `AlertProgressBuilder` can be use as the Android `ProgressDialog`:
     <!--ad_negativeColor used on positive text button color -->
     <item name="ad_negativeColor">#e1a4a4</item>
 
-  <!--   AlertProgressBuilder  --->
+  <!--   TintedProgressDialog  --->
   <!-- ProgressBar Dialog Color  --->
     <item name="pb_progressColor">#792e2e</item>
-  <!-- ProgressDialog Ttile  --->
+  <!-- TintedProgressDialog Ttile  --->
     <item name="pb_titleColor">#6ce4a6</item>
   <!-- ProgressDialog Divider  --->
     <item name="pb_dividerColor">#6ce4a6</item>
@@ -82,7 +82,7 @@ The `AlertProgressBuilder` can be use as the Android `ProgressDialog`:
 ```
 
 ### Java
-By the fault it will take your Application `accentColor` to Tint the `AlertDialogBuilder` `positiveButton` and `AlertProgressBuilder` `Title`, `Divider`and `ProgressBar` divider but you can change it, also you can change the `negativeButton` and the `neutralButton`.
+By the fault it will take your Application `accentColor` to Tint the `AlertDialogBuilder` `positiveButton` and `TintedProgressDialog` `Title`, `Divider`and `ProgressBar` divider but you can change it, also you can change the `negativeButton` and the `neutralButton`.
 
 ```java
 AlertDialogBuilder builder = new AlertDialogBuilder(this);
@@ -92,10 +92,11 @@ builder.setPositiveColor(ContextCompat.getColor(context,R.color.accentColor));
 ```
 
 ```java
-AlertProgressBuilder builder = new AlertProgressBuilder(this);
+TintedProgressDialog builder = new TintedProgressDialog(this);
 builder.setMessage("message");
 builder.setTitle("title");
 builder.setColorProgress(ContextCompat.getColor(this,R.color.colorPrimaryDark));
 builder.setTitleColor(ContextCompat.getColor(this, R.color.colorAccent));
-builder.setDividerColor(Color.GREEN);builder.show();
+builder.setDividerColor(Color.GREEN);
+builder.show();
 ```

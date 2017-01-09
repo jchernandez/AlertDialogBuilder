@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             progress.setProgressStyle(TintedProgressDialog.STYLE_HORIZONTAL);
             progress.setMessage("Horizontal progress");
             progress.setColorProgress(Color.LTGRAY);
+            progress.setTitle("title");
             progress.show();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
                     if(progress.getProgress() < 100) {
                         progress.setProgress(progress.getProgress() +1);
                         handler.postDelayed(this, 500);
+                    } else {
+                        progress.dismiss();
                     }
                 }
             }, 500);

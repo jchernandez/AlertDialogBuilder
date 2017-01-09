@@ -67,17 +67,30 @@ public class TintedProgressDialog extends AlertDialog {
     public TintedProgressDialog(Context context) {
         super(context);
         initFormats();
+        initColors();
     }
 
     public TintedProgressDialog(Context context, int theme) {
         super(context, theme);
         initFormats();
+        initColors();
     }
 
     private void initFormats() {
         mProgressNumberFormat = "%1d/%2d";
         mProgressPercentFormat = NumberFormat.getPercentInstance();
         mProgressPercentFormat.setMaximumFractionDigits(0);
+    }
+
+    private void initColors() {
+        int accent = AdUtils.getAccentColorAttr();
+
+        dividerColor = AdUtils.resolveColor(getContext(), R.attr.pb_dividerColor,
+                AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
+        progressColor = AdUtils.resolveColor(getContext(), R.attr.pb_progressColor,
+                AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
+        titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor,
+                accent);
     }
 
     public static TintedProgressDialog show(Context context, CharSequence title,
@@ -112,14 +125,6 @@ public class TintedProgressDialog extends AlertDialog {
     protected void onCreate(Bundle savedInstanceState) {
 
         TypedArray a = getContext().obtainStyledAttributes(null, R.styleable.AlertDialog, R.attr.alertDialogStyle, 0);
-        int accent = AdUtils.getAccentColorAttr();
-
-        dividerColor = AdUtils.resolveColor(getContext(), R.attr.pb_dividerColor,
-                AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
-        progressColor = AdUtils.resolveColor(getContext(), R.attr.pb_progressColor,
-                AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
-        titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor,
-                accent);
 
         if (mProgressStyle == STYLE_HORIZONTAL) {
             
@@ -343,15 +348,7 @@ public class TintedProgressDialog extends AlertDialog {
 
     @Override
     public void setMessage(CharSequence message) {
-        if (mProgress != null) {
-            if (mProgressStyle == STYLE_HORIZONTAL) {
-                super.setMessage(message);
-            } else {
-                mMessageView.setText(message);
-            }
-        } else {
-            mMessage = message;
-        }
+        mMessage = message;
     }
 
     public void setMessage(@StringRes int stringId) {
