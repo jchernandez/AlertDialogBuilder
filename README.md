@@ -23,7 +23,7 @@ allprojects {
  Add the dependency:
 ```gradle
     dependencies {
-	    compile 'com.github.jchernandez:AlertDialogBuilder:0.1.1'
+	    compile 'com.github.jchernandez:AlertDialogBuilder:0.2'
     }
 ```
 
