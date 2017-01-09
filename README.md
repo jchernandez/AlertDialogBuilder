@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/jchernandez/AlertDialogBuilder.svg)](https://jitpack.io/#jchernandez/AlertDialogBuilder)
 
 
-AlertDialogBuilder is a simple implementation of the Android  `android.support.v7.app.AlertDialog.Builder` to simple customize the `AlertDialog` Buttons and a customizable `ProgressDialog` that usea the [TintedProgressBar](https://github.com/jchernandez/TintedProgressBar).
+AlertDialogBuilder is a simple implementation of the Android  `android.support.v7.app.AlertDialog.Builder` to simple customize the `AlertDialog` Buttons and a customizable `ProgressDialog` that use the [TintedProgressBar](https://github.com/jchernandez/TintedProgressBar).
 
 # Gradle Dependency
 
