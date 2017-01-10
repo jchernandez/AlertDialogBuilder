@@ -61,7 +61,6 @@ public class TintedProgressDialog extends AlertDialog {
     private String title;
     private int progressColor = 0;
     private int titleColor = 0;
-    private int dividerColor = 0;
 
 
     public TintedProgressDialog(Context context) {
@@ -85,8 +84,6 @@ public class TintedProgressDialog extends AlertDialog {
     private void initColors() {
         int accent = AdUtils.getAccentColorAttr();
 
-        dividerColor = AdUtils.resolveColor(getContext(), R.attr.pb_dividerColor,
-                AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
         progressColor = AdUtils.resolveColor(getContext(), R.attr.pb_progressColor,
                 AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
         titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor,
@@ -167,11 +164,9 @@ public class TintedProgressDialog extends AlertDialog {
 
 
             titleView.setTextColor(titleColor);
-            view.findViewById(R.id.progress_divider).setBackgroundColor(dividerColor);
 
             if(title != null) {
                 titleView.setText(title);
-                view.findViewById(R.id.progress_divider).setVisibility(View.VISIBLE);
                 titleView.setVisibility(View.VISIBLE);
             }
             if(mMessage != null) {
@@ -191,11 +186,9 @@ public class TintedProgressDialog extends AlertDialog {
 
 
             titleView.setTextColor(titleColor);
-            view.findViewById(R.id.progress_divider).setBackgroundColor(dividerColor);
 
             if(title != null) {
                 titleView.setText(title);
-                view.findViewById(R.id.progress_divider).setVisibility(View.VISIBLE);
                 titleView.setVisibility(View.VISIBLE);
             }
             if(mMessage != null) {
@@ -372,9 +365,6 @@ public class TintedProgressDialog extends AlertDialog {
 
     public void setTitleColor(@ColorInt int color) {
         this.titleColor = color;
-    }
-    public void setDividerColor(@ColorInt int color) {
-        this.dividerColor = color;
     }
 
     public void setProgressStyle(int style) {

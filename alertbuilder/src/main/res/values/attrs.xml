@@ -8,7 +8,6 @@
     <declare-styleable name="ProgressBuilder">
         <attr name="pb_titleColor" format="reference|color"/>
         <attr name="pb_progressColor" format="reference|color"/>
-        <attr name="pb_dividerColor" format="reference|color"/>
         <attr name="progressBuilderStyle" format="reference"/>
     </declare-styleable>
 </resources>

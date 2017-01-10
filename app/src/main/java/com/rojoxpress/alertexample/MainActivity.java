@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             builder.setTitle("title");
             builder.setColorProgress(ContextCompat.getColor(this,R.color.colorPrimaryDark));
             builder.setTitleColor(ContextCompat.getColor(this, R.color.colorAccent));
-            builder.setDividerColor(Color.GREEN);
             builder.show();
 //            AlertProgressBuilder progressBuilder = AlertProgressBuilder.show(this,null, "message", true, false);
         } else {
