@@ -1,13 +1,16 @@
 package com.rojoxpress.alertdialogbuilder;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.ColorInt;
 import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -61,6 +64,9 @@ public class TintedProgressDialog extends AlertDialog {
     private String title;
     private int progressColor = 0;
     private int titleColor = 0;
+    private int messageColor = 0;
+    private int backgroundColor = 0;
+    private Drawable backgound;
 
 
     public TintedProgressDialog(Context context) {
@@ -82,12 +88,26 @@ public class TintedProgressDialog extends AlertDialog {
     }
 
     private void initColors() {
-        int accent = AdUtils.getAccentColorAttr();
 
+        TypedArray array = getContext().getTheme().obtainStyledAttributes(new int[]{
+                android.R.attr.textColorPrimary, android.R.attr.background});
+
+        int accent = AdUtils.getAccentColorAttr();
         progressColor = AdUtils.resolveColor(getContext(), R.attr.pb_progressColor,
                 AdUtils.resolveColor(getContext(),accent,AdUtils.defColor));
-        titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor,
-                accent);
+        titleColor = AdUtils.resolveColor(getContext(), R.attr.pb_titleColor, accent);
+
+
+        int backColor = array.getColor(1,0);
+
+        messageColor = AdUtils.resolveColor(getContext(),R.attr.pb_textColor, 0);
+
+        if(backColor == 0) {
+            backgroundColor = AdUtils.resolveColor(getContext(), R.attr.pb_backgroundColor, 0);
+        } else {
+            backgroundColor = backColor;
+        }
+
     }
 
     public static TintedProgressDialog show(Context context, CharSequence title,
@@ -121,10 +141,10 @@ public class TintedProgressDialog extends AlertDialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        TypedArray a = getContext().obtainStyledAttributes(null, R.styleable.AlertDialog, R.attr.alertDialogStyle, 0);
+        View view;
 
         if (mProgressStyle == STYLE_HORIZONTAL) {
-            
+
             /* Use a separate handler to update the text views as they
              * must be updated on the same thread that created them.
              */
@@ -154,7 +174,7 @@ public class TintedProgressDialog extends AlertDialog {
                 }
             };
 
-            View view = View.inflate(getContext(), R.layout.view_progress_horizontal_dialog, null);
+            view = View.inflate(getContext(), R.layout.view_progress_horizontal_dialog, null);
             mMessageView = (TextView) view.findViewById(R.id.progress_message);
             TextView titleView = (TextView) view.findViewById(R.id.progress_title);
             mProgress = (TintedProgressBar) view.findViewById(R.id.progressbar);
@@ -176,11 +196,9 @@ public class TintedProgressDialog extends AlertDialog {
             if(progressColor != 0) {
                 mProgress.setTintColor(progressColor);
             }
-            setView(view);
-
         } else {
-            View view = View.inflate(getContext(), R.layout.view_progress_dialog, null);
-            TextView messageView = (TextView) view.findViewById(R.id.progress_message);
+            view = View.inflate(getContext(), R.layout.view_progress_dialog, null);
+            mMessageView = (TextView) view.findViewById(R.id.progress_message);
             TextView titleView = (TextView) view.findViewById(R.id.progress_title);
             TintedProgressBar progressBar = (TintedProgressBar) view.findViewById(R.id.progressbar);
 
@@ -192,15 +210,16 @@ public class TintedProgressDialog extends AlertDialog {
                 titleView.setVisibility(View.VISIBLE);
             }
             if(mMessage != null) {
-                messageView.setText(mMessage);
+                mMessageView.setText(mMessage);
             }
 
             if(progressColor != 0) {
                 progressBar.setTintColor(progressColor);
             }
-            setView(view);
         }
-        a.recycle();
+
+        setView(view);
+
         if (mMax > 0) {
             setMax(mMax);
         }
@@ -224,6 +243,11 @@ public class TintedProgressDialog extends AlertDialog {
         }
         if (mMessage != null) {
             setMessage(mMessage);
+        }
+        if(messageColor != 0)
+            mMessageView.setTextColor(messageColor);
+        if(backgroundColor != 0) {
+            view.setBackgroundColor(backgroundColor);
         }
         setIndeterminate(mIndeterminate);
         onProgressChanged();

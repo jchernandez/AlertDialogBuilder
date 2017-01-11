@@ -9,5 +9,7 @@
         <attr name="pb_titleColor" format="reference|color"/>
         <attr name="pb_progressColor" format="reference|color"/>
         <attr name="progressBuilderStyle" format="reference"/>
+        <attr name="pb_backgroundColor" format="reference|color"/>
+        <attr name="pb_textColor" format="reference|color"/>
     </declare-styleable>
 </resources>

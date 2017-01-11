@@ -8,18 +8,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:paddingLeft="16dp"
         android:visibility="gone"
         style="?android:textAppearanceLarge"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="10dp"
         android:textStyle="bold"
         android:id="@+id/progress_title"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:padding="16dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="asdasdsa"
-            android:layout_marginLeft="16dp"
+            android:paddingLeft="16dp"
             android:id="@+id/progress_message"/>
     </LinearLayout>
 
