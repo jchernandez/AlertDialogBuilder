@@ -30,4 +30,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show Horizontal Progress alert" />
+    <Button
+        android:id="@+id/array_button"
+        android:onClick="onclick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Array" />
+    <Button
+        android:id="@+id/show_button"
+        android:onClick="onclick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show" />
 </LinearLayout>

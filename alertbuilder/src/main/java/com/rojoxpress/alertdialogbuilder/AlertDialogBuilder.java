@@ -6,6 +6,9 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AlertDialog.Builder;
 import android.util.AttributeSet;
@@ -93,4 +96,50 @@ public class AlertDialogBuilder extends Builder {
         neutralButton.setTextColor(neutralTextColor);
         return dialog;
     }
+
+
+    public static AlertDialog showAlert(Context context, @StringRes int title, @StringRes int message,
+                                        @StringRes int positiveButton, @StringRes int negativeButton,
+                                        @StringRes int neutralButton,
+                                        DialogInterface.OnClickListener onClickListener) {
+        return showAlert(context, context.getString(title),
+                context.getString(message),
+                context.getString(positiveButton),
+                context.getString(negativeButton),
+                context.getString(neutralButton),
+                onClickListener);
+    }
+
+    public static AlertDialog showAlert(Context context, CharSequence title,
+                                               CharSequence message, CharSequence positiveButton,
+                                               CharSequence negativeButton, CharSequence neutralButton,
+                                               DialogInterface.OnClickListener onClickListener) {
+
+        AlertDialogBuilder builder = new AlertDialogBuilder(context);
+
+
+        if(title != null) {
+            builder.setTitle(title);
+        }
+
+        if(message != null) {
+            builder.setMessage(message);
+        }
+
+        if(positiveButton != null) {
+            builder.setPositiveButton(positiveButton, onClickListener);
+        }
+
+        if(negativeButton != null) {
+            builder.setNegativeButton(negativeButton, onClickListener);
+        }
+
+        if (neutralButton != null) {
+            builder.setNeutralButton(neutralButton, onClickListener);
+        }
+
+
+        return builder.show();
+    }
+
 }
